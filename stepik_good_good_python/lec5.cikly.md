@@ -315,6 +315,7 @@ for line in pascal_triangle_lst:
 
 
 
+list comprehension
 
 Генераторы списков:
 Например нам нужен списко с квадратами знасений
@@ -402,3 +403,146 @@ print(*[j for i,j in enumerate(a) ][::-1])
 или разворот в момент перевода встроку тойже матрицы и далее просто *a
 lst = [j for i in lst_in[::-1] for j in i[::-1]]
 
+list comprehension  вложенные генераторы списков
+a = [(i,j) for i inrange(3) for j in range(4)]
+print(a)
+
+можно рассписать как
+a = [(i,j)
+    for i in range(3)
+    for j in range(4)
+    ]
+
+сначала берет первое значение i и пробегается уже j по всему диапазону, далее второе значение i и опять весь диапазон j
+[(0,0), (0,1), (0,2), (0,3), (1,0)......]    
+
+a = [(i,j)
+    for i in range(3) if i % == 0  доп условие на то что i должно быть кратно 3
+    for j in range(4) if j % 2 == 0 доп услови на кратность 2
+    ]
+a = [ f"{i} * {j} = {i*j}"    Тут уже выводим как f строку и полкчаеся таблица умнодения
+    for i in range(3)
+    for j in range(4)
+    ]    
+
+matrix = [[0,1,2,3],           преобразование матрицы в одномерный список
+         [10,11,12,13],
+         [20,21,22,23]
+         ]    
+
+a = [x
+    for row in matrix   мы можем во вложенных циклвах использшвать переменные из сосоедних циклов
+    for x in row
+    ]
+print(a)
+[0,1,2,3,10,11,12,12,20,21,22,23]
+
+воженый генератор списка в другой генератор списка
+M, N = 3,4
+matrix = [[a for a in range(M)] for b in range(N)]
+print(matrix)
+[[0,1,2], [0,1,2], [0,1,2], [0,1,2]] в итоге унас 4 группы , это 4 запуска b , по 3 значения это длина отработки a
+тут сначала пробегает цикл с b и потмо при кадом b запускается итерация цикла с a
+например b=0 и запускается a (тут a=0) , b=1 и снова цикл с a (тут a=1)
+
+Например возведение в квадрат списка списков
+A=[[1,2,3], [4,5,6], [7,8,9]]
+A=[[x**2 for x in row] for row in A]  генератор row передирате сами списки, а влоденный генератор пербирает непосредственно уже значения во вложенных списках
+[[1,4,9], [16,25,36], [49,64,81]]
+_______
+A= [x**2 for row in A for x in row] Отличи от верхней записи, в том что тут будет вывод в один список , а не в список списков
+[1,4,9,16,25,36,49,64,81]
+
+Транспонирвоание матрицы
+A = [[1,2,3,4], [5,6,7,8], [9,10,11,12]]
+A = [[row[i] for row in A] for i in range(len(A[0]))]
+print(A)
+[[1,5,9], [2,6,9], [3,7,11], [4,8,12]]
+ берем длину любого вложенного списка, и берем индекс 0 далее пробегаем цифры с этим индексом из всех вложенных, далее 1 и цифры с этим индексом из всех вложенных.
+*********************
+*********************
+генератор списка вложен в сам итерируемый объект т.к. сам генератор тоже итерируемый объект
+g=[u**2 for u in [x+1 for x in range(5)]]
+[1,4,9,16,25] Тут в правом генерится список от 1 до 5 , т.к. range 0-4, мы делаем x+1, чтобы получить от 1 до 5 и потом каждый элемент спсика возводится в квадрат
+
+-----
+есть  матрица нудно преобразовать в список идещий в обратном порядке
+Sample Input:
+
+1 2 3 4
+5 6 7 8
+9 8 7 6
+5 4 3 2
+Sample Output:
+
+2 3 4 5 6 7 8 9 8 7 6 5 4 3 2 1
+import sys
+
+# считывание списка из входного потока
+s = sys.stdin.readlines()
+lst_in = [list(map(int, x.strip().split())) for x in s]
+a = [x for row in lst_in for x in row]
+
+print(*[j for i,j in enumerate(a) ][::-1])
+
+import sys
+
+# считывание списка из входного потока
+s = sys.stdin.readlines()
+lst_in = [list(map(int, x.strip().split())) for x in s]
+
+lst = [j for i in lst_in[::-1] for j in i[::-1]]
+
+print(*lst)
+
+import sys
+
+# считывание списка из входного потока
+s = sys.stdin.readlines()
+lst_in = [list(map(int, x.strip().split())) for x in s]
+
+print(*[x for row in lst_in for x in row][::-1])
+
+import sys
+print(*list(map(int, sys.stdin.read().split()))[::-1])
+
+s = sys.stdin.readlines()
+lst_in = [list(map(int, x.strip().split())) for x in s]
+
+# здесь продолжайте программу (используйте список lst_in)
+lst = [x for row in lst_in for x in row]
+lst.reverse()
+print(*lst)
+
+-------------
+--------------
+вводится списорк и из него нужно сделать квадратную матрицу N и M 
+Sample Input:
+
+1 2 3 4 5 6 7 8 9
+Sample Output:
+
+[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+# put your python code here
+a = list(map(int, input().split()))
+N = int(len(a) ** 0.5)
+b = [[j for i,j in enumerate(a[N*y:N*y+N])] for y in range(N)]
+print(b)
+
+# put your python code here 
+можно через итератор т.к. он всегда берет следующее значение и делает проход один раз, получается очень удобно
+l = list(map(int, input().split()))
+n = int(len(l)**0.5)
+it = iter(l)
+m = [[next(it) for y in range(n)] for x in range(n)]
+
+print(m)
+
+lst_in = list(map(int, input().split()))
+
+N = int(len(lst_in) ** 0.5)
+
+lst = [lst_in[i:i+N] for i in range(0, len(lst_in), N)]
+
+print(lst)
