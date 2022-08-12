@@ -1,4 +1,7 @@
-st = '1234567890'
-a = list(set([y for x,y in enumerate (input()) if y in st]))
-a.sort()
-print(*a if a else ['НЕТ'])
+a = input().split()
+#a=a.replace('=', ',')
+#a=a.split(sep=' ')
+#lst = [[x] for x in a]
+#a = list(a.replace(' ', ','))
+print(a)
+#print(lst)
