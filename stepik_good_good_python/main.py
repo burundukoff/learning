@@ -1,7 +1,4 @@
-a = input().split()
-#a=a.replace('=', ',')
-#a=a.split(sep=' ')
-#lst = [[x] for x in a]
-#a = list(a.replace(' ', ','))
-print(a)
-#print(lst)
+d = dict(c.split('=') for c in input().split())
+for c in d:
+  d[c] = int(d[c])
+print(*sorted(d.items()))
