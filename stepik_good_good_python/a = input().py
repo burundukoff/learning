@@ -1,5 +1,7 @@
-a = input().split()
-a = [x.split(sep='=') for x in a]
-a = [[int(j) if j.isdigit() else j for i,j in enumerate(y)]for y in a]
-d = dict(a)
-print(*sorted(d.items()))
+import sys
+
+# считывание списка из входного потока
+lst_in = list(map(str.strip, sys.stdin.readlines()))
+print(lst_in)
+
+# здесь продолжайте программу (используйте список lst_in)
