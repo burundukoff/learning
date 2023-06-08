@@ -1,0 +1,10 @@
+k = int(input())                                # 8                   #
+a = ' ' + input() + ' '                                    # 1 2 3 4 5 1 2 3
+a1 = a.split(' 1 ')
+a_max = ''
+for i in a1[1:]:
+    a_int = ('1 ' + i).strip().split()
+    a_max += a_int[-1] + ' '
+
+print(len(a1)-1)
+print(a_max[:-1])

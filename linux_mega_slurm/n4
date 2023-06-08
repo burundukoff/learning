@@ -1,0 +1,28 @@
+# Задача 4
+n, m = 4, 5                 # map(int, input().split())        #
+z, y = 20, 10               # map(int, input().split())        #
+k    = 3                    # int(input())                     #
+a    = [11, 21, 22, 23] # list(map(int, input().split())) #
+b    = [32, 33, 34, 42, 51] # list(map(int, input().split())) #
+
+def return_time_max():
+   time_max = -1
+   for i in range(k+1):
+       not_time = -1
+       for ai in a[i:n]:
+           for bi in b[:m-(k-i)]:
+               if ai + z <= bi:
+                   not_time = bi + y
+                   if time_max < not_time:
+                       time_max = not_time
+       if not_time == -1:
+           time_max = -1
+           return time_max
+   return time_max
+
+if k >= n or k >= m:
+   print(-1)
+elif k == 0:
+   print(b[m] + y)
+else:
+   print(return_time_max())

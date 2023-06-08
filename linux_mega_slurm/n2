@@ -1,0 +1,36 @@
+# Задача 2
+k = int(input())                     # 7                   #
+e = list(map(int, input().split()))  # [1,3,8,5,7,3,4] #
+m = int(input())                     # 6                   #
+
+friends = {}
+friends_line = []
+all_friends = []
+sum_e = 0
+
+for i in range(1,k+1):
+   friends[i] = [i]
+
+for _ in range(m):
+   get_fr, have_fr = map(int, input().split()) # Введем 1 2\n1 3\n 2 3\n4 5\n4 6\n4 7
+   if have_fr not in friends[get_fr]: # избавимся от повторов
+       friends[get_fr].append(have_fr)
+   if get_fr not in friends[have_fr]: # избавимся от повторов
+       friends[have_fr].append(get_fr)
+
+for i in range(1,k+1):
+   if i not in all_friends:
+       for j in friends[i]:
+           for n in friends[j]:
+               if n not in friends[i]:
+                   friends[i].append(n)
+       friends_line.append(friends[i])
+       all_friends += friends[i]
+
+for i in friends_line:
+   en = []
+   for j in i:
+       en.append(e[j-1])
+   sum_e += min(en)
+
+print(sum_e)

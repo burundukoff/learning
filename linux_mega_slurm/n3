@@ -1,0 +1,29 @@
+n, h = 9, 13 # 10, 8                 # map(int, input().split())        #
+a    = [6,4,2,2,1,2,1,1,7,1,2,3] # [5,4,2,2,1,2,1,1,7,1] # list(map(int, input().split())) #
+
+h_sum = 0
+m = 0
+j = 0
+s = n//2
+
+for i in range(0,n-1,2):
+   h_sum += max(a[i:i+2])
+   # print(i, h_sum)
+   if h_sum > h:
+       h_sum -= max(a[i:i+2])
+       # print('2', h_sum)
+       if h_sum + a[i] <= h:
+           m += 1
+       break
+   else:
+       m += 2
+   j += 1
+   # print(m)
+
+if n%2 != 0 and j == s:
+   if h_sum + a[n-1] <= h:
+       h_sum += a[n-1]
+       # print('3', h_sum)
+       m += 1
+
+print(m)
