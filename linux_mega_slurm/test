@@ -1,0 +1,6 @@
+lst_in = ["Пермь", "Ижевск"]  # этот список не менять
+if "Пермь" in lst_in:
+    k = lst_in.index("Пермь")
+    print(k)
+    lst_in.remove("Пермь")
+    print(lst_in)
