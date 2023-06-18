@@ -35,4 +35,22 @@ calue = dq.pop()
 #LIFO
 dq.append(55)
 value = dq.popleft
+__________________
+Стек
+почти тоже чо и очередь LIFO, но выделлили для удобства, все методы стека O(1)
+from collections import deque  или from queue import LifoQueve  такое обычно при многопоточном программировании
+stack = deque() или  stack = deque([1,2,3])
+stack.append(5)  или stack.appendleft(-1)
+value = stack.pop()   stack.popleft()
+___________________
+Префиксное/перегруженное дерево
+ar["dog"] = 1;
+ar["to"] = 2;
+O(|key|)
+____________________
+Хэш таблицы хранят ключ значение. при чем ключ получен путем использования хэш функции.
+
+
+
+
 
