@@ -23,6 +23,18 @@
 # s = "2 + 3 * (1 - 5 - (3 * x - 5)) + (a - b)"
 # res = get_sub_eq(s)
 
-a = {1:2, 2:3, 4:5}
-b=a.values()
-print(b)
+# a = {1:2, 2:3, 4:5}
+# b=a.values()
+# print(b)
+# for ind in a.items():
+#     print(ind)
+#     if ind[1] == 3:
+#         print(ind)
+path = "/foo/../test/../test/../foo//bar/./baz"
+def shortenPath(path):
+    lst = path.split("/")
+    print(lst)
+    
+    return "/foo/bar/baz"
+shortenPath(path)
+#print(shortenPath("/foo/../test/../test/../foo//bar/./baz"))
