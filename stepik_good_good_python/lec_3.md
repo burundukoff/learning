@@ -36,6 +36,7 @@ print (new_list)
 [1, 2, 3, 4, 5, 6, 7]
 
 a, b = map(float, input("Введите").split())
+name, surname = input().split()
 
 у print 2 необязательных параметра 
 sep-разделитель, по умолчанию это пробел и 
