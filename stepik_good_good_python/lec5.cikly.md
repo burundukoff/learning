@@ -561,3 +561,25 @@ lst = [[i for i in s.split() if len(i) > 3] for s in t]
 print(lst)
 
 
+итерирование функцией iter пока не поступит искомое значение,
+def chet(x):
+    return not x % 2
+
+[print(i) for i in iter(input, '1') if chet(int(i))]
+
+def func(x):
+  return int(x) % 2
+  
+for i in iter(input, '1'):
+  if not func(i):
+    print(i)
+
+while с присваиванием  значения и последукющей проверкой
+
+def chet(n):
+    return n % 2 == 0
+
+while (n := int(input())) != 1:
+    if chet(n):
+        print(n)
+
