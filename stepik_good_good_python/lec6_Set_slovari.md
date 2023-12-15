@@ -197,3 +197,39 @@ a = {int(x) for x in lst if int(x) > 0}  генератор с условием
 a = {x: x**2 for x in range(1, 5)}
 a = {key.upper(): int(value) for key, value in d.items() } ключи переводим в заглавные буквы, занчения интуем, а генератор достает ключ значение из словаря, методом items (items показывает словарь в форме списка кортежей)
 a = {int(value): key for key, value in d.items if 2 <= int(value) <= 5}  меняем ключи и значения местами, при этом занчени болжны быть в диапазоне от 2 до 5
+
+---------------------------
+создать словарь из строки, и вывести 4-й элемент
+строка "1 ужасно неудовлетворительно удовлетворительно прилично отлично"
+--
+s = input().split()
+marks = {int(s[0]) + i: value for i, value in enumerate(s[1:])}
+print(marks[4])
+--
+lst = list(input().split())
+d = {}
+for i in range(len(lst) - 1):
+    lst_key = [x for x in range(int(lst[0]), (len(lst)) + int(lst[0]) - 1)]
+    d[lst_key[i]] = lst[i + 1]
+print(d[4])
+-----------------------------
+
+Делаем множество без учета звгланая не заглавная, можно или уже элемент сажать или при приеме до разбития списка сажать буквы
+st = {x.lower() for x in input().split() if len(x) >= 3}
+print(len(st))
+
+text = {word for word in input().lower().split() if len(word) > 2}
+print(len(text))
+
+-----------
+перебор строки с добавлением в словарь и подсчет повторов
+d = {}
+for w in input().lower().split():
+    d[w] = d.get(w, 0) + 1 
+print(d.get('и', 0))
+
+или 
+
+lst = input().lower().split()
+d = {i: lst.count(i) for i in lst}
+print(d.get('и',0))

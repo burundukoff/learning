@@ -226,6 +226,10 @@ print(input().replace('+7', '8').replace('-', '')) сразу меняем +7 н
 принятие любого количества аргументов и в int их
 p(*map(int,input().split()))
 ---------
+ввод в список с нескольких строк
+lst_in = list(map(str.strip, sys.stdin.readlines()))
+----------
+
 выборка двоек из введенной строки
 print(list(map(int, input().split())).count(2))
 Двумерные списки:
