@@ -7,3 +7,17 @@ if Perimetr:
 else:
     def get_rect(a, b):
         return a + b    
+
+
+# put your python code here
+# put your python code here
+def lench_str(str):
+    return str, len(str)
+
+lst = input().split()
+d = {}
+d = dict(lench_str(x) for x in lst)
+
+#print(d)
+a = sorted(d, key=lambda x: d[x])
+print(*a)        
